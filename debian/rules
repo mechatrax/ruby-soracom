@@ -1,0 +1,28 @@
+#!/usr/bin/make -f
+#export DH_VERBOSE=1
+#
+# Uncomment to ignore all test failures (but the tests will run anyway)
+#export DH_RUBY_IGNORE_TESTS=all
+#
+# Uncomment to ignore some test failures (but the tests will run anyway).
+# Valid values:
+#export DH_RUBY_IGNORE_TESTS=ruby2.1
+#
+# If you need to specify the .gemspec (eg there is more than one)
+#export DH_RUBY_GEMSPEC=gem.gemspec
+#
+# Uncomment to check dependencies during build:
+# export GEM2DEB_TEST_RUNNER = --check-dependencies
+
+%:
+	dh $@ --buildsystem=ruby --with ruby
+
+override_dh_auto_install:
+	install -d debian/ruby-soracom
+	dh_ruby --install debian/ruby-soracom
+	rm debian/ruby-soracom/usr/bin/console
+	rm debian/ruby-soracom/usr/bin/setup
+	install -D -m755 exe/soracom debian/ruby-soracom/usr/bin/soracom
+	install -d debian/ruby-soracom debian/ruby-soracom/usr/share/bash-completion/completions
+	ruby -r'./lib/soracom/cli.rb' -e 'SoracomCli::CLI.new.complete' > debian/ruby-soracom/usr/share/bash-completion/completions/soracom
+

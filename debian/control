@@ -1,0 +1,24 @@
+Source: ruby-soracom
+Section: ruby
+Priority: optional
+Maintainer: Masahiro Honda <honda@mechatrax.com>
+Build-Depends: debhelper (>= 9~),
+               gem2deb,
+               ruby (>= 2.0~),
+               ruby-thor
+Standards-Version: 3.9.6
+Homepage: https://github.com/soracom/soracom-sdk-ruby/
+Testsuite: autopkgtest-pkg-ruby
+XS-Ruby-Versions: all
+
+Package: ruby-soracom
+Architecture: all
+XB-Ruby-Versions: all
+Depends: ${misc:Depends},
+         ruby (>= 2.0~),
+         ruby-thor
+Suggests: jq
+Description: SORACOM API Client library and tool
+ SORACOM provides sets of APIs to control their IoT platform service.
+ This gem package will let you call SORACOM API either via command line
+ interface or Ruby program.
