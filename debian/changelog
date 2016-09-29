@@ -1,3 +1,9 @@
+ruby-soracom (1.1.6-1) unstable; urgency=medium
+
+  * New upstream release
+
+ -- Masahiro Honda <honda@mechatrax.com>  Thu, 29 Sep 2016 08:49:06 +0000
+
 ruby-soracom (1.1.5-1) unstable; urgency=medium
 
   * New upstream release
